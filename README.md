@@ -53,4 +53,6 @@ Additionally, the console supports `<class name>.<command>(<parameters>)` syntax
 Ex:
 `City.show(my_city_id)`
 
-This repo was forged from [Kevin Yook](https://github.com/yook00627)
+* ![GitHub Contributors Image](https://contrib.rocks/image?repo=sandro132/holbertonschool-low_level_programming) 
+Miguel Angel Velez Ocampo - <a href="https://github.com/sandro132" target="_blank"> @sandro132</a>
+* ![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=sandro132&show_icons=true)
