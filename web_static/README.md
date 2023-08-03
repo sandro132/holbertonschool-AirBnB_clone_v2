@@ -1,1 +1,1 @@
-This directory implements webpage design.
+# Create the web static for Arbnb
