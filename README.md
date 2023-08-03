@@ -1,4 +1,6 @@
-# HBNB
+# holbertonschool-AirBnB_clone2
+![65f4a1dd9c51265f49d0](https://user-images.githubusercontent.com/98162365/176899920-64b889dc-9e43-4413-b0a4-b1821b53dc2b.png)
+## Welcome to the AirBnB clone 2 project!
 
 This is the console /command interpreter for the Holberton Airbnb clone project. The console can be used to store objects in and retrieve objects from a JSON.
 
