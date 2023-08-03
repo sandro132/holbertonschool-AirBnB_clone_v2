@@ -46,4 +46,12 @@ class BaseModel:
                           (str(type(self)).split('.')[-1]).split('\'')[0]})
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
-        return dictionary
+        return dictionaryi
+        if "_sa_instance_state" in my_dict.key()
+            del my_dict["_sa_instance_state"]
+        return my_dict
+
+    def delete(self):
+        """Delete the current instance from the storage"""
+        models.storage.delete(self)
+
