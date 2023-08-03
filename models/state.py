@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
+"""This is the state class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -9,7 +9,10 @@ import models
 
 
 class State(BaseModel, Base):
-    """This is the class for State"""
+    """This is the class for State
+    Attributes:
+        name: input name
+    """
     __tablename__ = 'states'
     if getenv('HBNB_TYPE_STORAGE') == "db":
         name = Column(String(128), nullable=False)
@@ -28,4 +31,3 @@ class State(BaseModel, Base):
                 if value.state_id == self.id:
                     new_list.append(value)
             return new_list
-
