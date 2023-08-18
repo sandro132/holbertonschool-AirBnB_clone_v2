@@ -1,33 +1,49 @@
 #!/usr/bin/python3
-"""This is the state class"""
-from models.base_model import BaseModel, Base
+""" State Module for HBNB project """
+from models.base_model import BaseModel
+from models.base_model import Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
-from models.city import City
 from os import getenv
 import models
+import shlex
 
 
 class State(BaseModel, Base):
-    """This is the class for State
-    Attributes:
-        name: input name
     """
-    __tablename__ = 'states'
-    if getenv('HBNB_TYPE_STORAGE') == "db":
-        name = Column(String(128), nullable=False)
-        cities = relationship("City",
-                              cascade="all, delete",
-                              backref="my_state")
-    else:
-        name = ""
+    Represents a state for a MySQL database.
 
-    if getenv('HBNB_TYPE_STORAGE') != "db":
+    Inherits from SQLAlchemy Base and links to the MySQL table states.
+
+    Attributes:
+        __tablename__ (str): The name of the MySQL table to store States.
+        name (sqlalchemy String): The name of the State.
+        cities (sqlalchemy relationship): The State-City relationship.
+    """
+    storage = getenv("HBNB_TYPE_STORAGE")
+
+    if storage is None:
+        storage = "fs"
+
+    __tablename__ = "states"
+    name = Column(String(128), nullable=False)
+
+    if storage == 'fs':
         @property
         def cities(self):
-            new_list = []
-            my_cities = models.storage.all(City)
-            for key, value in my_cities.items():
-                if value.state_id == self.id:
-                    new_list.append(value)
-            return new_list
+            """return the cities of the current state"""
+            var = models.storage.all()
+            lista = []
+            result = []
+            for key in var:
+                city = key.replace('.', ' ')
+                city = shlex.split(city)
+                if (city[0] == 'City'):
+                    lista.append(var[key])
+            for elem in lista:
+                if (elem.state_id == self.id):
+                    result.append(elem)
+            return (result)
+
+    if storage == 'db':
+        cities = relationship('City', backref='state', cascade='all, delete')
